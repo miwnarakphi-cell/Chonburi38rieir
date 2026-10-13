@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ใบสัญญารัก</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chonburi&family=Mitr:wght@400;500&family=Sarabun:wght@400;500;600&family=Sriracha&display=swap">
+<style>
+:root{--bg:#f3e6e0;--ink:#3b1d29;--mute:#8a6572;--gold:#b8892b;--rose:#be123c;--paper:#fffaf0;--line:#d9b97a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d0f15}}
+:root[data-theme="dark"]{--bg:#1d0f15}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);font-family:'Sarabun',system-ui,sans-serif;color:var(--ink);line-height:1.6}
+.wrap{min-height:100%;max-width:600px;margin:0 auto;padding:12px;display:flex;align-items:center}
+.paper{position:relative;width:100%;background:var(--paper);border:4px double var(--gold);border-radius:6px;padding:8px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.inner{border:1.5px solid var(--line);padding:20px 16px 16px;position:relative;background:radial-gradient(circle at 50% 0,#fff 0,transparent 60%)}
+.orn{position:absolute;color:var(--gold);font-size:16px;line-height:1}
+.tl{top:3px;left:5px}.tr{top:3px;right:5px}.bl{bottom:3px;left:5px}.br{bottom:3px;right:5px}
+.head{text-align:center}
+.crest{width:52px;height:52px;margin:0 auto 4px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;font-size:25px;background:#fff6e0}
+h1{font-family:'Chonburi','Mitr',serif;font-weight:400;font-size:28px;margin:0;color:var(--rose);letter-spacing:1px}
+.sub{font-size:11px;letter-spacing:3px;color:var(--gold)}
+.no{font-size:12.5px;color:var(--mute)}
+.div{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:9px 0}
+.row{margin:8px 0;font-size:16px;text-align:center}
+.fill{display:block;width:100%;border:0;border-bottom:1.5px dotted var(--gold);background:transparent;font:500 20px 'Mitr',sans-serif;color:var(--rose);text-align:center;padding:3px;outline:none}
+.fill::placeholder{color:#cdb78a;font-size:15px;font-family:'Sarabun'}
+.fill:focus{border-bottom-style:solid}
+.fill.sm{font-size:16px}
+.cap{text-align:center;font-size:12px;color:var(--mute)}
+.clause{display:flex;gap:12px;align-items:center;padding:12px 8px;border-bottom:1px dashed var(--line);cursor:pointer;font:500 19px 'Mitr',sans-serif}
+.clause .n{flex:none;font-family:'Chonburi',serif;color:var(--gold);width:22px}
+.chk{margin-left:auto;width:28px;height:28px;border:2px solid var(--gold);border-radius:6px;display:grid;place-items:center;color:transparent;font-size:17px;transition:.2s}
+.clause.on .chk{background:var(--rose);border-color:var(--rose);color:#fff}
+.btn{width:100%;margin-top:14px;padding:14px;border:0;border-radius:10px;font:500 18px 'Mitr',sans-serif;color:#fff;background:linear-gradient(135deg,#d6455f,var(--rose));cursor:pointer;box-shadow:0 6px 16px rgba(190,18,60,.3)}
+.btn:disabled{opacity:.4;box-shadow:none;cursor:not-allowed}
+.note{text-align:center;font-size:12.5px;color:var(--mute);margin-top:6px}
+.link{background:none;border:0;color:var(--rose);font:inherit;cursor:pointer;padding:0}
+.seal{display:none;position:absolute;right:14px;bottom:78px;width:120px;height:120px;border:4px double var(--rose);border-radius:50%;color:var(--rose);font:400 16px/1.2 'Chonburi',serif;text-align:center;place-items:center;transform:rotate(-14deg);opacity:.88;background:rgba(190,18,60,.04);pointer-events:none}
+.seal.show{display:grid;animation:stamp .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes stamp{from{transform:rotate(-14deg) scale(2.4);opacity:0}}
+.locked .fill,.locked .clause,.locked .agree{pointer-events:none}
+.agree{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;color:var(--mute);margin-top:12px;cursor:pointer;line-height:1.4}
+.agree input{margin-top:2px;width:16px;height:16px;accent-color:var(--rose);flex:none}
+.agree u{color:var(--rose);text-decoration-style:dotted}
+.sigwrap{width:55%;margin:4px auto 0;border-bottom:1.5px dotted var(--gold);height:52px;display:flex;align-items:flex-end;justify-content:center}
+.sig{font:400 44px/1.25 'Sriracha',cursive;color:#1e2a6b;transform:rotate(-4deg);clip-path:inset(-30% 100% -30% -10%);transition:clip-path 1.3s ease-out}
+.locked .sig{clip-path:inset(-30% -10% -30% -10%)}
+.ov{display:none;position:fixed;inset:0;z-index:9;background:rgba(40,10,20,.8);padding:calc(env(safe-area-inset-top,0px) + 14px) 14px calc(env(safe-area-inset-bottom,0px) + 14px);align-items:center;justify-content:center}
+.ov.show{display:flex}
+.ovin{max-width:420px;width:100%;text-align:center;color:#fff}
+.ovin img{max-width:100%;max-height:66vh;border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.5);animation:fin .6s}
+@keyframes fin{from{opacity:0;transform:scale(.94)}}
+.ovin .link{color:#fff;font-size:15px;margin-top:10px}
+.tip{font-size:13px;opacity:.85;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="paper" id="paper"><div class="inner">
+ <span class="orn tl">❦</span><span class="orn tr">❦</span><span class="orn bl">❦</span><span class="orn br">❦</span>
+ <div class="head">
+  <div class="crest">💞</div>
+  <h1>ใบสัญญารัก</h1>
+  <div class="sub">LOVE PLEDGE CERTIFICATE</div>
+  <div class="no">เลขที่ <span id="no">—</span></div>
+ </div>
+ <div class="div"></div>
+
+ <div>
+  <div class="clause" data-t="ไม่ทิ้ง"><div class="n">๑</div>ไม่ทิ้ง<div class="chk">✓</div></div>
+  <div class="clause" data-t="ไม่นอกใจ"><div class="n">๒</div>ไม่นอกใจ<div class="chk">✓</div></div>
+  <div class="clause" data-t="อยู่ด้วยกันจนโต"><div class="n">๓</div>อยู่ด้วยกันจนโต<div class="chk">✓</div></div>
+ </div>
+
+ <div class="div"></div>
+ <div class="row" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0">
+  <div><input class="fill sm" id="time" readonly><div class="cap">เวลา</div></div>
+  <div><input class="fill sm" id="date" readonly><div class="cap">วันที่</div></div>
+ </div>
+
+ <div class="sigwrap"><div class="sig">อร</div></div>
+ <div class="cap">ลายมือชื่อ</div>
+ <label class="agree"><input type="checkbox" id="ag"><span>ฉันได้อ่านและยอมรับ<u>ข้อตกลงและเงื่อนไข</u>ของสัญญารักแล้ว</span></label>
+ <button class="btn" id="go" disabled>🔏 ประทับตราสัญญา</button>
+ <div class="note" id="note">แตะเลือกให้ครบทั้ง 3 ข้อ แล้วติ๊กยอมรับเงื่อนไข</div>
+ <div class="seal" id="seal"><div>สัญญา<br>แล้ว<br>♥</div></div>
+</div></div>
+</div>
+
+<div class="ov" id="ov"><div class="ovin"><img id="pic" alt="ใบสัญญารัก"><button class="btn" id="sv">💾 บันทึก / แชร์รูป</button><div class="tip">หรือกดค้างที่รูปแล้วเลือก “บันทึกรูป”</div><button class="link" id="cl">ปิด</button></div></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+var d=new Date();
+$('date').value=d.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'});
+document.querySelectorAll('.clause').forEach(function(el){el.onclick=function(){el.classList.toggle('on');update()}});
+function setTime(){$('time').value=new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'})+' น.'}
+setTime();
+$('ag').onchange=function(){update()};
+function update(){
+ var ok=document.querySelectorAll('.clause.on').length==3&&$('ag').checked;
+ $('go').disabled=!ok;
+ $('note').textContent=ok?'พร้อมประทับตราแล้ว 💗':'แตะเลือกให้ครบทั้ง 3 ข้อ แล้วติ๊กยอมรับเงื่อนไข';
+}
+$('go').onclick=function(){
+ setTime();
+ $('no').textContent='LV-'+d.getFullYear()+'-'+String(Math.floor(Math.random()*9000)+1000);
+ $('paper').classList.add('locked');$('seal').classList.add('show');
+ $('go').textContent='✓ สัญญามีผลแล้ว';$('go').disabled=true;
+ $('note').innerHTML='<button class="link" onclick="openPic()">ดูรูป</button> · <button class="link" onclick="location.reload()">เริ่มสัญญาใหม่</button>';
+ makeImage();
+};
+var cv;
+function openPic(){$('ov').classList.add('show')}
+$('cl').onclick=function(){$('ov').classList.remove('show')};
+$('sv').onclick=function(){
+ if(!cv)return;
+ cv.toBlob(function(b){
+  var f=new File([b],'love-pledge.png',{type:'image/png'});
+  if(navigator.canShare&&navigator.canShare({files:[f]})){navigator.share({files:[f]}).catch(function(){})}
+ });
+};
+async function makeImage(){
+ try{await Promise.all(['110px Chonburi','80px Mitr','40px Sarabun','80px Sriracha'].map(function(f){return document.fonts.load(f,'ใบสัญญารัก ไม่ทิ้ง ๑ อร')}))}catch(e){}
+ var W=1080,H=1560,c=document.createElement('canvas');c.width=W;c.height=H;var x=c.getContext('2d');
+ var g=x.createLinearGradient(0,0,0,H);g.addColorStop(0,'#fff7ec');g.addColorStop(1,'#ffe3e8');x.fillStyle=g;x.fillRect(0,0,W,H);
+ x.fillStyle='rgba(190,18,60,.07)';x.textAlign='center';
+ for(var i=0;i<26;i++){x.font=(40+(i*37)%70)+'px serif';x.fillText('♥',(i*173)%W,(i*311)%H+60)}
+ x.strokeStyle='#b8892b';x.lineWidth=10;x.strokeRect(40,40,W-80,H-80);x.lineWidth=3;x.strokeRect(68,68,W-136,H-136);
+ x.fillStyle='#b8892b';x.font='56px serif';
+ [[110,140],[W-110,140],[110,H-90],[W-110,H-90]].forEach(function(p){x.fillText('❦',p[0],p[1])});
+ x.beginPath();x.arc(W/2,260,90,0,7);x.fillStyle='#fff6e0';x.fill();x.lineWidth=5;x.stroke();
+ x.font='90px serif';x.fillStyle='#000';x.fillText('💞',W/2,292);
+ x.fillStyle='#be123c';x.font='120px Chonburi, serif';x.fillText('ใบสัญญารัก',W/2,520);
+ x.fillStyle='#b8892b';x.font='34px Sarabun, sans-serif';if('letterSpacing' in x)x.letterSpacing='10px';x.fillText('LOVE PLEDGE CERTIFICATE',W/2,585);if('letterSpacing' in x)x.letterSpacing='0px';
+ x.fillStyle='#8a6572';x.font='38px Sarabun, sans-serif';x.fillText('เลขที่ '+$('no').textContent,W/2,650);
+ var lg=x.createLinearGradient(160,0,W-160,0);lg.addColorStop(0,'rgba(184,137,43,0)');lg.addColorStop(.5,'#b8892b');lg.addColorStop(1,'rgba(184,137,43,0)');x.fillStyle=lg;x.fillRect(160,700,W-320,3);
+ var sel=Array.from(document.querySelectorAll('.clause.on')).map(function(e){return e.dataset.t}),nn=sel.length;
+ sel.forEach(function(t,i){
+  var y=800+i*130+(3-nn)*65;
+  x.textAlign='left';x.fillStyle='#b8892b';x.font='80px Chonburi, serif';x.fillText(['๑','๒','๓'][i],180,y);
+  x.fillStyle='#3b1d29';x.font='80px Mitr, sans-serif';x.fillText(t,300,y);
+  x.beginPath();x.arc(890,y-28,32,0,7);x.fillStyle='#be123c';x.fill();x.fillStyle='#fff';x.font='42px sans-serif';x.textAlign='center';x.fillText('✓',890,y-14);
+  x.fillStyle='#d9b97a';x.fillRect(180,y+40,740,2);
+ });
+ x.fillStyle=lg;x.fillRect(160,1140,W-320,3);
+ x.textAlign='center';
+ [[300,$('date').value,'วันที่'],[780,$('time').value,'เวลา']].forEach(function(r){
+  x.fillStyle='#be123c';x.font='46px Mitr, sans-serif';x.fillText(r[1],r[0],1230);
+  x.fillStyle='#8a6572';x.font='30px Sarabun, sans-serif';x.fillText(r[2],r[0],1275);
+ });
+ x.save();x.translate(300,1400);x.rotate(-.1);x.fillStyle='#1e2a6b';x.font='150px Sriracha, cursive';x.fillText('อร',0,0);x.restore();
+ x.fillStyle='#d9b97a';x.fillRect(150,1425,300,2);x.fillStyle='#8a6572';x.font='28px Sarabun, sans-serif';x.fillText('ลายมือชื่อ',300,1465);
+ x.save();x.translate(800,1395);x.rotate(-.25);x.strokeStyle='#be123c';x.lineWidth=8;x.beginPath();x.arc(0,0,85,0,7);x.stroke();x.lineWidth=3;x.beginPath();x.arc(0,0,74,0,7);x.stroke();
+ x.fillStyle='#be123c';x.font='36px Chonburi, serif';x.fillText('สัญญา',0,-14);x.fillText('แล้ว',0,28);x.font='34px serif';x.fillText('♥',0,66);x.restore();
+ cv=c;$('pic').src=c.toDataURL('image/png');
+ setTimeout(openPic,900);
+}
+</script>
+</body>
+</html>
